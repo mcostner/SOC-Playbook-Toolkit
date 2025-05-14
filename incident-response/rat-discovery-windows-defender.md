@@ -66,3 +66,21 @@ Additional review will include deeper analysis of:
 - The original PowerShell script
 - Potential C2 (Command and Control) communication
 - Registry-based persistence or autorun methods
+
+---
+
+## Sample Code Analysis (RAT Script)
+
+Below is a decoded summary of the malicious PowerShell code discovered:
+
+- Heavy use of obfuscation to evade detection
+- Calls to `wscript.exe` and `powershell.exe`
+- Uses ActiveX to execute silently
+- Creates a named mutex to avoid multiple executions
+- Establishes persistence via Scheduled Task named `jQueryLibrary`
+- Collects system data: username, hostname, IP, architecture
+- Uses compression and Base64 encoding to exfiltrate data
+- Attempts outbound C2 communication to `https://173.90.0.16:443`
+- Loads and executes staged payloads using `Invoke-FruityC2`
+
+> This script is a highly flexible and evasive Remote Access Trojan (RAT) built for stealth and control.
