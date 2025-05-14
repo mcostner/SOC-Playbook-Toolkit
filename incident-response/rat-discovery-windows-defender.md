@@ -2,68 +2,67 @@
 
 ## Overview
 
-During routine analysis of a workstation, Microsoft Defender detected and quarantined a file later identified as a Remote Access Trojan (RAT). This document outlines the discovery process, investigation steps, and recommended mitigation actions based on best practices.
+This document outlines the discovery of a Remote Access Trojan (RAT) using Microsoft Defender. The threat was detected as part of a multi-stage incident involving suspicious script execution and user account discovery activity.
 
 ---
 
-## Detection Method
+## Detection Summary
 
-- **Tool Used:** Microsoft Defender (Windows Security)
-- **Detection Name:** _[e.g., Trojan:Win32/Rundas!plock]_
-- **Alert Level:** _[e.g., Severe]_
-- **Initial Clue:** _[e.g., unexpected alert on a low-activity system]_
+- **Tool Used:** Microsoft Defender
+- **Severity:** Medium
+- **Incident:** Multi-stage involving Execution & Discovery
+- **Timeline:** Activity observed from December through May
 
-> _📸 Screenshot Placeholder:_ Defender threat detection window  
-> _(include: threat name, severity, detected file path)_
-
----
-
-## Indicators of Compromise (IoCs)
-
-- **File Name:** _[e.g., rundll32.exe in unusual location]_
-- **Path:** _[e.g., C:\Users\...\AppData\Roaming\...]_
-- **Persistence Method:** _[e.g., Registry Run key, Scheduled Task]_
-- **Other Clues:** Unusual process behavior, suspicious outbound traffic, unknown services
-
-> _📸 Screenshot Placeholder:_ Suspicious autorun entries or tasks
+> ![Defender Incident Alert](images/rat1.png)
 
 ---
 
-## Triage and Investigation
+## Suspicious Activity Timeline
 
-- Reviewed Event Viewer logs for abnormal login/process activity
-- Examined Task Scheduler and Startup entries for persistence mechanisms
-- Verified file behavior via Defender history and process inspection
-- Confirmed non-legitimate behavior (e.g., remote shell callbacks)
+Microsoft Defender identified:
 
-> _📸 Screenshot Placeholder:_ Timeline of events, Windows Defender history  
-> _📸 Screenshot Placeholder:_ Quarantined item info
+- `wscript.exe` invoking `powershell.exe`
+- Execution of suspicious `.ps1` script
+- Suspicious user account discovery behavior
 
----
-
-## Containment and Recommended Mitigation
-
-- Ensure Windows Defender definitions are up to date
-- Quarantine or delete the file using Windows Defender or PowerShell
-- Disable or delete unauthorized Scheduled Tasks and registry Run keys
-- Reset local user passwords (especially admin accounts)
-- Conduct full offline Defender scan (via Windows Recovery)
-- Review lateral movement or external connections via logs
+> ![Activity Breakdown](images/rat2.png)
 
 ---
 
-## Lessons Learned
+## Key Indicator
 
-- Even with Defender, sophisticated RATs can sit dormant until triggered
-- Behavioral monitoring and endpoint visibility are essential
-- Visibility into autoruns and scheduled tasks is critical in threat discovery
+One specific alert flagged:
+
+```plaintext
+wscript.exe performed user account discovery by invoking powershell.exe
+```
+
+This behavior is commonly associated with post-exploitation reconnaissance.
+
+> ![User Account Discovery](images/rat3.png)
 
 ---
 
-## Suggested Hardening Actions
+## Current Status
 
-- Deploy Defender for Endpoint (if available)
-- Enable controlled folder access
-- Apply application whitelisting on user workstations
-- Disable or restrict script execution (PowerShell, WMI)
-- Implement regular integrity checks for startup and scheduled task items
+- Device remains online and active in the environment
+- Defender history shows script-based recon still occurring
+- Investigation has not yet resulted in containment or isolation
+
+---
+
+## Recommended Actions
+
+- Immediately isolate the affected endpoint
+- Perform a full scan and remove unauthorized scheduled tasks
+- Review login history, token use, and session persistence
+- Apply application whitelisting and PowerShell logging
+
+---
+
+## Next Steps
+
+Additional review will include deeper analysis of:
+- The original PowerShell script
+- Potential C2 (Command and Control) communication
+- Registry-based persistence or autorun methods
