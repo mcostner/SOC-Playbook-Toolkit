@@ -1,4 +1,4 @@
-# RAT Discovery via Windows Defender
+# Remote Access Trojan (RAT) Discovery via Windows Defender
 
 ## Overview
 
