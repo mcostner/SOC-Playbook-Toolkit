@@ -105,3 +105,29 @@ wshShell.Run('%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe -Execu
 - Outputs a disguised script file to `C:\CSI:.js`, suggesting **stealth via fake file extension**
 
 This behavior strongly supports the presence of a stealth RAT using script-based execution, likely tied to a persistence mechanism like **Scheduled Tasks** or **registry autoruns**.
+
+
+---
+
+## Containment and Remediation
+
+Upon discovery, the compromised device was reported, and an incident review report was submitted with recommended actions. While full remediation details are beyond the scope of this document, the detection of RAT activity prompted internal escalation.
+
+**Recommended actions at the time included:**
+
+- Isolating the endpoint from the network
+- Reviewing and removing any persistence mechanisms (e.g., Scheduled Tasks, registry autoruns)
+- Resetting affected user credentials
+- Conducting a full malware scan and endpoint reimage if necessary
+- Reviewing Defender alerts and correlating with other endpoints for potential lateral movement
+
+---
+
+## Next Steps
+
+Based on current findings, future analysis could include:
+
+- Inspecting Windows Task Scheduler and registry autoruns for hidden persistence mechanisms
+- Reviewing PowerShell event logs and command-line history
+- Extracting and analyzing any related hashes or dropped payloads
+- Monitoring network traffic for signs of Command and Control (C2) callbacks
