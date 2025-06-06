@@ -13,7 +13,7 @@ This document outlines the discovery of a Remote Access Trojan (RAT) using Micro
 - **Incident:** Multi-stage involving Execution & Discovery
 - **Timeline:** Activity observed from December through May
 
-> ![Defender Incident Alert](/images/rat1.png)
+> ![Defender Incident Alert](images/rat1.png)
 
 ---
 
@@ -25,7 +25,7 @@ Microsoft Defender identified:
 - Execution of suspicious `.ps1` script
 - Suspicious user account discovery behavior
 
-> ![Activity Breakdown](rat-discovery/images/rat2.png)
+> ![Activity Breakdown](images/rat2.png)
 
 ---
 
@@ -39,7 +39,7 @@ wscript.exe performed user account discovery by invoking powershell.exe
 
 This behavior is commonly associated with post-exploitation reconnaissance.
 
-> ![User Account Discovery](rat-discovery/images/rat3.png)
+> ![User Account Discovery](images/rat3.png)
 
 ---
 
