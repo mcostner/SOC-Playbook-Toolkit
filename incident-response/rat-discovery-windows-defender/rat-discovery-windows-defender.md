@@ -13,7 +13,7 @@ This document outlines the discovery of a Remote Access Trojan (RAT) using Micro
 - **Incident:** Multi-stage involving Execution & Discovery
 - **Timeline:** Activity observed from December through May
 
-> ![Defender Incident Alert](rat-discovery/images/rat1.png)
+> ![Defender Incident Alert](/images/rat1.png)
 
 ---
 
