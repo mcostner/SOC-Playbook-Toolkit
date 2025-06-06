@@ -39,3 +39,5 @@ This case study simulates a Business Email Compromise (BEC) attack targeting a s
 ---
 
 *This is a lab-based recreation of a real-world BEC tactic intended to demonstrate detection and response workflows.*
+
+[← Back to Home](https://mcostner.github.io/)
