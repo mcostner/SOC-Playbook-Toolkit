@@ -93,4 +93,6 @@ This playbook outlines a repeatable process for identifying and responding to cl
 - Always assume lateral movement is possible.
 - Consider preserving logs for forensic retention.
 
+*Maintained by Mike Costner – Security Playbooks & Procedures Project.*
+
 [← Back to Home](https://mcostner.github.io/)
