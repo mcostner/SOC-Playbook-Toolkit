@@ -1,4 +1,4 @@
-# Business Email Compromise (BEC) – Executive Wire Fraud Simulation
+# Business Email Compromise (BEC) – Executive Spoofing Simulation
 
 ## Summary
 This case study simulates a Business Email Compromise (BEC) attack targeting a small business finance department. A threat actor impersonates the CEO and attempts to initiate a fraudulent wire transfer via a spoofed email.
