@@ -43,3 +43,4 @@ This simulated incident recreates a Business Email Compromise (BEC) scenario whe
 
 *This is a lab-based recreation of a real-world BEC tactic involving vendor compromise and payment diversion. The workflow demonstrates practical detection and response techniques applicable to real environments.*
 
+[← Back to Home](https://mcostner.github.io/)
