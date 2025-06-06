@@ -131,3 +131,5 @@ Based on current findings, future analysis could include:
 - Reviewing PowerShell event logs and command-line history
 - Extracting and analyzing any related hashes or dropped payloads
 - Monitoring network traffic for signs of Command and Control (C2) callbacks
+
+[← Back to Home](https://mcostner.github.io/)
